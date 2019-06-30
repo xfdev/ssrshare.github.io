@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7384725227124412",
+          enable_page_level_ads: true
+     });
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137891186-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137891186-1');
+</script>
+
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+
+
+   <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/eJEAzFh.jpg">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.0.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="鸿蒙操作系统用的微内核到底是什么？">
+<meta name="keywords" content="华为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鸿蒙操作系统用的微内核到底是什么？">
+<meta property="og:url" content="http://ssrshare.github.io/2019/06/30/huawei-12/index.html">
+<meta property="og:site_name" content="暗网世界">
+<meta property="og:description" content="鸿蒙操作系统用的微内核到底是什么？">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imgur.com/Gjg0kqu.jpg">
+<meta property="og:updated_time" content="2019-06-30T03:04:54.845Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鸿蒙操作系统用的微内核到底是什么？">
+<meta name="twitter:description" content="鸿蒙操作系统用的微内核到底是什么？">
+<meta name="twitter:image" content="https://imgur.com/Gjg0kqu.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://ssrshare.github.io/2019/06/30/huawei-12/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>鸿蒙操作系统用的微内核到底是什么？ | 暗网世界</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">暗网世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">darkweb</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">33</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-bt">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/bt/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>种子资源</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-fuli">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/fuli/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>羊毛福利</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-zhi">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/zhi/" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>知识星球</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+<div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7384725227124412" data-ad-slot="1380392799" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ssrshare.github.io/2019/06/30/huawei-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小伟科技">
+      <meta itemprop="description" content="deep web">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="暗网世界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">鸿蒙操作系统用的微内核到底是什么？
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-30 11:00:31 / 修改时间：11:04:54" itemprop="dateCreated datePublished" datetime="2019-06-30T11:00:31+08:00">2019-06-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/华为/" itemprop="url" rel="index"><span itemprop="name">华为</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>鸿蒙操作系统用的微内核到底是什么？<br><a id="more"></a></p>
+<blockquote>
+<p>安卓系统是宏内核，而最近热议的华为鸿蒙操作系统是微内核。什么是微内核？微内核是如何发展？其优缺点是什么呢？一起来看看吧。</p>
+</blockquote>
+<h1 id="背景庞大的-UNIX-家族"><a href="#背景庞大的-UNIX-家族" class="headerlink" title="背景庞大的 UNIX 家族"></a>背景庞大的 UNIX 家族</h1><p><img src="https://imgur.com/Gjg0kqu.jpg" alt></p>
+<p>计算机技术在二战后快速发展，构成计算机的主要基本单元从电子管发展到分立晶体管，再到后来的大规模集成电路。随着计算机技术发展，计算机性能越来越强劲，硬件越来越复杂，人们发现很难去直接管理计算机了，于是人们开始设计软件用于管理越来越复杂的计算机系统，这些软件称作系统级软件。</p>
+<p>从最开始的批处理系统，多道程序系统，分时系统到上世纪 60 年代开始出现通用操作系统，计算机系统层出不穷，直到上世纪 70 年代才出现被大家广泛接受广泛使用的通用操作系统。其中最经典的当然就是 UNIX 系统了。</p>
+<p>UNIX 系统，1971 年诞生于大名鼎鼎的贝尔实验室的一台 PDP-11/24 机器上，其后经过不断发展与传播，在 80 年代取得了巨大成功，UNIX 被移植到众多的处理器架构，并在众多行业得到广泛使用，甚至成为行业标准影响至今。</p>
+<p>UNIX 以及类 UNIX 系统如 Linux 都是典型的宏内核设计，也就是把所有系统服务都放到内核里，因为系统服务代码之间存在大量数据交换和大量的服务请求，而在同一个代码段内进行函数调用（C 语言）或跳转（汇编或者机器码时代）是最直接、最高效的方法，在同一片地址空间也方便数据交换，所以这样的宏内核设计是很自然的。</p>
+<p>但是随着 UNIX 内核功能的拓展（文件系统、TCP/IP网络协议栈、进程管理、内存管理、驱动程序等），UNIX 内核代码也相应增加了很多，进而在可维护性、稳定性、安全性方面面临一些挑战。为了试图解决这些挑战，人们开始尝试使用微内核的思想来设计系统内核。</p>
+<h1 id="什么是微内核"><a href="#什么是微内核" class="headerlink" title="什么是微内核?"></a>什么是微内核?</h1><p>微内核设计的基本思想是简化内核功能，在内核之外的用户态尽可能多地实现系统服务，同时加入相互之间的安全保护。内核只提供最基础的服务，比如多进程调度、多进程通信（IPC）等。其中进程通信是作为连接应用与用户态系统服务的桥梁。</p>
+<p>宏内核与微内核的对比示意图</p>
+<p>宏内核系统相关的服务基本都是放于内核态内核中，例如文件系统、设备驱动、虚拟内存管理、网络协议栈等；而微内核则把更多的系统服务（例如文件系统、POSIX 服务、网络协议栈甚至外设驱动）放到用户态应用，形成一个个服务，等待其他应用的请求。而后来，为了在宏内核与微内核之间扬长避短，也发展出了中间的混合内核的形态，部分服务也会放置于内核中。</p>
+<p>微内核的发展历史</p>
+<p>微内核这个概念从提出开始就在不断地发展、完善进步之中，到目前为止可以分为三代。</p>
+<p>第一代微内核：从无到有<br>第一代微内核的主要代表是 Mach，该系统由美国卡耐基梅隆大学的 Avie Tevanian 和 Richard Rashid 主导开发。在 Mach 刚刚开始设计时，UNIX 的发展正如日中天，所以Mach在设计时的一大目标就是兼容 UNIX，但是与 UNIX 不同的是 Mach 尝试使用微内核架构去设计。Mach 以 IPC 是作为所有系统服务与内核交换数据的基础机制，充分运用 IPC、虚拟内存、多进程等特性将冗余的系统服务移出内核作为进程运行。</p>
+<p>1986年，经过两年的开发，第一版的 Mach 发布后的第二年，Mach 就发布了第2版，不过由于时间仓促，加之没有足够的人手与资金，所以此时 Mach 内核并不提供完全的系统服务。</p>
+<p>为了支撑系统上层运行，这一版的内核包含了大量 4.3 版本的 BSD 系统（UNIX的一个分支）代码提供系统服务，并且 BSD 系统服务运行在内核状态，这导致 Mach 内核的代码体积甚至大于常规 UNIX 内核。</p>
+<p>第一版和第二版的 Mach 主要做了如下工作：</p>
+<ol>
+<li><p>验证了微内核的可行性；</p>
+</li>
+<li><p>在多处理器计算机上进行移植验证了微内核在多处理器计算机上的运行；</p>
+</li>
+<li><p>最后为了提高 IPC 的效率，Mach 使用共享内存机制来完成 IPC。</p>
+</li>
+</ol>
+<p>而 Mach 的共享内存机制是在虚拟内存技术的支持下实现的，只有需要对内存进行写入时才进行复制。这么一处理比每次都复制一遍内存节省了内存使用同时又加快了 IPC 机制的处理时间，这个改进称为写时复制，并且在如今的通用操作系统如 Linux 中常常用到。</p>
+<p>经过测试，Mach 2.5的效率最多比 UNIX 少 25%，但是考虑到 Mach 带来的可靠性、可拓展性、安全性，这个效率损失尚可以接受。</p>
+<p>当然此时 Mach 内核还不算完全的微内核。而考虑到微内核可以更高效地利用多处理器计算机的处理器核心资源，人们期待着等 Mach 把系统服务都搬到内核之外后可以把运行效率损失降下来。</p>
+<p>同时 Mach 在微内核方面小小的尝试迅速吸引了大批公司与组织的注意，开放软件基金会（Open Software Foundation，OSF）宣布下一代系统 OSF/1 将基于 Mach 的内核， NeXTSTEP 也将使用 Mach2.5， 甚至 IBM 也打算利用 Mach 构建 Workplace OS。苹果公司这个时候也出手了，苹果公司也从此基于 Mach2.5 打造其操作系统内核 XNU，XNU的构成如下图所示，Mach 作为内核的内环，外环右侧是苹果的驱动框架（I/O Kit），外环左侧是 BSD 的系统服务代码提供 UNIX 兼容的服务层，这三者共同协作向上层提供完整的系统服务。XNU 广泛地使用在苹果公司的 OSX、IOS等系统中。</p>
+<p>这个时候由于 UNIX 系统广泛使用带来的商业利益，此时 BSD 系统开发者与 UNIX 的拥有者 AT&amp;T 陷入了法律大战，Mach 使用的 BSD 相关代码有了法律风险。</p>
+<p>提升性能的期望和规避法律风险的需求推动着 Mach 3.0 的开发，Mach 3.0 的开发目标主要是为了替换 BSD 系统服务，同时尽量多地将系统服务放到内核之外去运行，成为名副其实的微内核设计。</p>
+<p>经过众多开发者 3 年的努力，Mach 3.0 于 1990 年发布，但是由于在系统服务之间完全使用 IPC 通信，而不是向宏内核那样直接进行函数调用，即便是多处理器机器上运行也性能损失惨重，Mach 3.0 最多比 UNIX 损失 67% 运行效率，这导致 Mach 3.0 以及其所代表的第一代微内核设计被看衰。此后断断续续有在 Mach 的基础上对性能进行提升的尝试，但是均不太理想，至此 Mach 成为了微内核第一代先驱者。</p>
+<p>第二代微内核：解决性能问题<br>第二代微内核的主要代表是 L3 和 L4，以及 QNX 系统使用的 Neutrino 内核。前面第一代的微内核 Mach 由于效率问题虽然失败了，但是微内核的理念并没有被放弃，德国的计算机科学家 Jochen Liedtke 认为 Mach 的 IPC 效率低下的原因就是因为 IPC 部分不够精简，于是他开发了 L3 和 L4 微内核，对 IPC 部分进行了很彻底的精简：</p>
+<ol>
+<li><p>内核的 IPC 机制只是单纯地传递信息，诸如安全权限检查这类的代码都省略掉，省略掉的功能全部由用户进程自己处理。如此一来 IP C功能部分的代码执行时间大大缩短；</p>
+</li>
+<li><p>IPC 不使用内存传递消息，而使用寄存器传递消息，同时限制 IPC 每次传递的信息长度，这样省去了对内存的访问时间。L4 微内核的 IPC 速度经过测试要比 Mach 快 20 倍，这个令人惊讶的优化效果吸引了众多的目光，使微内核的研究重新火热起来。后面 L4 内核又发展出了很多相关系统，比如 Pistachio、L4/MIPS 与 Fiasco 等等，这些内核组成了 L4 的大家族。</p>
+</li>
+</ol>
+<p>第二代微内核的代表除了有 L4 内核，也还有其他微内核比如 Exokernel、Rambler 等，不过商业上最成功的则是目前黑莓公司旗下的 QNX 系统所使用的 Neutrino 内核（QNX，1980年诞生，最初以 QUICK UNIX 为名，后改为 QNX；2004 年 QNX 被 Harman 国际收购；2010 年 Harman 国际下被黑莓收购，QNX 成为黑莓旗下的资产），QNX 主要为高可靠领域提供解决方案，比如交通、能源、医疗、航天航空等。</p>
+<p>第三代微内核：主要重视安全问题等<br>在前面两代的基础上，第三代微内核蓬勃发展，许许多多微内核都被开发出来，主要代表有：seL4、Fiasco.OC、NOVA 等。</p>
+<p>本来第一代微内核的设计隔离了使内核安全性降低的系统服务，让系统服务漏洞不会影响内核，进而提高了内核安全性，可以说是关上了破坏系统的门， 但是第二代系统却又给攻击者开了个窗户。</p>
+<p>由于第二代微内核在内核中省去了关于安全性检查等步骤，把所有关于安全检查功能的实现都交给系统服务自己去实现，这导致系统服务的通信接口直接暴露给用户态，任何进程都可能无限制地请求系统服务，系统服务不得不花费额外的代价来区分请求是否合法，容易造成拒绝服务攻击。</p>
+<p>比如正常的文件服务应该是从虚拟文件系统服务-&gt;文件系统服务-&gt;磁盘驱动服务这个流程来完成的，但是如果攻击者如果绕过虚拟文件系统服务，直接无限制地请求攻击者本身没有权限访问的文件系统服务，使文件系统服务长期处于满载状态，让其他进程无法通过正常的虚拟文件系统得到文件系统服务。为了增强安全性，且不过分影响性能，人们开始研发第三代微内核。</p>
+<p>seL4 是在第二代内核 L4 的基础上发展而来的。seL4 不仅仅继承了 L4 内核家族的高性能特性，还具备基于端点（enndpoint）的 IPC 机制。</p>
+<p>这种 IPC 机制最大的特点是使用了能力空间的概念，进程在使用 IPC 请求系统服务时必须具备相对应的能力，进程持有不可伪造的令牌来表示拥有请求某种服务的能力。令牌可以被复制，可以被转移，还可以通过 IPC 进行传输。令牌其实是一个指向存在于内核空间内核对象的指针，所以普通进程并不能修改自身以及其他进程的权限分配，但是内核可以对令牌指定的权限进行控制，从而保证了用户态不能绕过能力空间这个机制对系统服务造成滥用。</p>
+<p>seL4 还是第一个完全通过形式化验证的内核，通俗说形式化验证就是在数学软件的帮助下使用数学语言自动化地推导检查系统的每一个运行状态。seL4 形式化验证相关论文。</p>
+<p>其他的微内核系统：Fuchsia、Minix<br>Fuchsia 是 Google 开发的一款全新操作系统，试图覆盖手机、平板甚至笔记本等一系列领域。Google 为该系统配备了 Vulkan 图形接口、3D 桌面渲染 Scenic、Flutter 应用开发框架，还有一个称为 zircon 的微内核。</p>
+<p>zircon 内核是从高通平台的一个 Bootloader 项目：Little Kernel发展而来。zircon内核属于微内核设计，只提供 IPC、进程管理、地址空间管理功能。zircon 区别于以进程或者以文件为核心的设计，zircon 是以内存为核心来设计的，内存在 zircon 中是以对象的方式存在，可以通过 channel 通信机制传递虚拟内存对象（Virtual memory object）的句柄，进程拿到句柄后可以把这块内存映射到自己的空间。</p>
+<p>Minix 系统则由荷兰阿姆斯特丹的 Vrije 大学的 Andrew S.Tanenbaum 教授所开发。</p>
+<p>该系统最大的特点是可以故障隔离，自动重启失败的服务。</p>
+<p>Minix 使用分层设计，最底层的微内核提供中断处理、进程管理、进程通信等服务，这一层运行在内核态；中间层提供轮回服务（Reincarnation Server）、文件服务、进程管理、X 图形服务以及驱动等，这一层运行在用户态，最上层为用户进程。</p>
+<p>其中轮回服务负责在中间层的服务出现崩溃时重启这些服务，从而保证服务的自我修复。Minix 由于其自我修复特性被英特尔管理引擎（ME）所选用，该管理引擎主要负责管理英特尔芯片的内部模块。</p>
+<h1 id="微内核的优缺点"><a href="#微内核的优缺点" class="headerlink" title="微内核的优缺点"></a>微内核的优缺点</h1><p>一、优点<br>系统服务模块化，可移植性高；</p>
+<p>内核安全性提高（模块内部的 Bug 不影响内核稳定，将黑客利用软件漏洞造成的破坏限制在单个模块内部）；</p>
+<p>可以多套系统服务共存，相当于同时运行多种操作系统；</p>
+<p>稳定统一的接口（可以独立维护私有驱动以及服务，不需要跟内核源码绑定）；</p>
+<p>在商业上，微内核可以避免代码受到一些开源协议的影响，比如 GPL 协议；</p>
+<p>内核精简，可以进行形式化验证，利用数学证明内核的安全性；</p>
+<p>数学可证明的实时性；</p>
+<p>非常适合多处理器系统设计，在多处理器核心计算机上，互相依赖的系统服务可以同时运行；</p>
+<p>二、缺点</p>
+<p>通过进程通信的方式交换数据或者调用系统服务，而不是使用系统调用，造成额外的操作系统开销；</p>
+<p>使用一些频繁使用的系统服务时，比如网络收发数据，造成的进程上下文切换对操作系统来说也是一个负担；</p>
+<p>由于系统服务高度模块化，系统服务之间存在大量的内存复制；</p>
+<p>对互相之间存在复杂调用关系的系统服务，难以设计通信接口；</p>
+<p>系统服务与内核在地址空间上分离，造成代码局部性差，降低了 cache 命中率。</p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    
+    <div>
+    
+      
+    </div>
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/华为/" rel="tag"># 华为</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/30/5g/" rel="next" title="5G 是否会淘汰掉 WiFi？">
+                <i class="fa fa-chevron-left"></i> 5G 是否会淘汰掉 WiFi？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+  
+
+          </div>
+          
+
+  
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">小伟科技</p>
+              <p class="site-description motion-element" itemprop="description">deep web</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://bit.ly/2V2hPiG" title="YouTube &rarr; https://bit.ly/2V2hPiG" rel="noopener" target="_blank"><i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/joinchat/JdOmmxDOkOxhCHcHP1okwg" title="Telegram &rarr; https://t.me/joinchat/JdOmmxDOkOxhCHcHP1okwg" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/jackwan90768726" title="Twitter &rarr; https://twitter.com/jackwan90768726" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://thelighter.github.io/" title="https://thelighter.github.io/" rel="noopener" target="_blank">python爱好者</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+          
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+   <div class="links-of-blogroll-title">
+     <!-- modify icon to fire by szw -->
+     <i class="fa fa-history fa-" aria-hidden="true"></i>
+     热°度
+   </div>
+   <ul class="links-of-blogroll-list">
+     
+     
+       <li>
+         <a href="/2019/06/30/huawei-12/" title="鸿蒙操作系统用的微内核到底是什么？" target="_blank">鸿蒙操作系统用的微内核到底是什么？</a>
+       </li>
+     
+       <li>
+         <a href="/2019/06/30/5g/" title="5G 是否会淘汰掉 WiFi？" target="_blank">5G 是否会淘汰掉 WiFi？</a>
+       </li>
+     
+       <li>
+         <a href="/2019/06/30/a-2/" title="2019最现实的灵魂六问!您配吗？" target="_blank">2019最现实的灵魂六问!您配吗？</a>
+       </li>
+     
+       <li>
+         <a href="/2019/06/29/darkweb-7/" title="暗网交易市场——人性的黑暗和欲望总是这样！" target="_blank">暗网交易市场——人性的黑暗和欲望总是这样！</a>
+       </li>
+     
+       <li>
+         <a href="/2019/06/29/darkweb-6/" title="darkweb暗网入口——tor暗网浏览器教程，解决“暗网怎么进？”的需求！" target="_blank">darkweb暗网入口——tor暗网浏览器教程，解决“暗网怎么进？”的需求！</a>
+       </li>
+     
+   </ul>
+ </div>
+
+
+
+          
+            
+          
+           
+
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景庞大的-UNIX-家族"><span class="nav-number">1.</span> <span class="nav-text">背景庞大的 UNIX 家族</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是微内核"><span class="nav-number">2.</span> <span class="nav-text">什么是微内核?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微内核的优缺点"><span class="nav-number">3.</span> <span class="nav-text">微内核的优缺点</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+      <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      
+    </div>
+  </aside>
+  
+
+  
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaowei</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+</body>
+</html>
