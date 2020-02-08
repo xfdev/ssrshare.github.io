@@ -1,0 +1,176 @@
+body{
+    font-family: "Microsoft YaHei",sans-serif;
+}
+html{
+    overflow-x: hidden;
+}
+.sea{
+    position: fixed;
+    left:-9999px;
+}
+/*导航*/
+.navbar-default{
+    background: linear-gradient(90deg,#328dd3,#c6bfcf,#062741);
+    border: none;
+    box-shadow: 0px 2px 8px 0px rgba(50,50,0,30);
+}
+.navbar-default .navbar-brand{
+    font-size: 22px;
+    font-weight: bold;
+    color: #00f5bc;
+    height: 70px;
+    line-height: 35px;
+}
+.navbar-default .navbar-nav>li>a{
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    height: 70px;
+    line-height: 35px;
+}
+.navbar-default .navbar-toggle .icon-bar{
+    background: #00f5bc;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+.header_warp_cut .nav_more .top {
+    -webkit-transform: translateY(6px) rotateZ(45deg);
+}
+.header_warp_cut .nav_more .middle {
+    width: 0;
+    vertical-align: hidden;
+}
+.header_warp_cut .nav_more .bottom {
+    -webkit-transform: translateY(-8px) rotateZ(-45deg);
+}
+.navbar-toggle{
+    margin-top: 17px;
+}
+.lvJing{
+    /* 联系我们 */
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    padding:10px 0;
+}
+
+/*列表*/
+#list{
+    /* background: #032642; */
+    background: linear-gradient(90deg,#26c411,#448cda,#4f34e6);
+    padding: 70px 0 30px;
+    text-align: center;
+}
+#list h2{
+    font-weight: bold;
+    padding-bottom: 0px;
+    color:#fff;
+}
+#list .col-md-3{
+    margin-bottom: 20px;
+}
+.course{
+    background: #092c49;
+    margin-top:10px;
+    border-radius: 5px;
+    color:#fff;
+}
+.toast-container{
+    margin-top:300px;
+}
+.col-md-4{
+    padding: 0 5px;
+}
+.course img{
+    display: inline;
+}
+.course .number{
+    border-bottom: 1px solid rgb(156, 150, 150);
+    margin:10px 40px;
+    font-size: 18px;
+    font-weight: 800;
+    color:#fff;
+}
+.course .sum{
+    font-size: 16px;
+    color:#fff;
+    font-weight: 600;
+}
+.course .btn{
+    background: #449d44;
+    border-radius: 0;
+    color: #fff;
+    margin: 1px 0;
+    margin-bottom: 10px;
+    padding: 8px 40px;
+    transition: all 0.3s;
+}
+.course .btn:hover{
+    background: #40d2b1;
+    color: #ffffff;
+}
+
+/*联系我们*/
+#contact{
+    background-size: cover;
+    color: #ffffff;
+}
+#contact .lvJing{
+ background: #133c61
+}
+.zoomInLeft{
+    padding: 0 30px;
+}
+#contact h2{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#contact p{
+    line-height: 25px;
+    margin-bottom: 5px;
+}
+#contact .form-control {
+    border: none;
+    border-radius: 0;
+    height: 30px;
+    margin-bottom: 10px;
+}
+#contact textarea.form-control{
+    height: auto;
+}
+#contact input[type="submit"]{
+    background: #40D2B1;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+#contact input[type="submit"]:hover{
+    background: rgb(44, 142, 120);
+}
+address{
+    margin-bottom: 10px;
+}
+/*footer*/
+footer{
+    font-weight: 400;
+    text-align: center;
+    padding: 12px 0 8px;
+    overflow: hidden;
+    background:#092c49;
+    color:#fff
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #63e67f;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {|
+    color: #63e67f;
+    background-color: transparent;
+}

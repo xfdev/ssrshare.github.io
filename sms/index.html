@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+    <meta name="description" content="免费短信接码平台">
+    <meta name="keywords"
+        content="在线短信接收，云短信,在线短信接收，免费接码平台,接码平台，网页版,短信验证码接收,在线短信接收平台,免费验证码接收平台,手机短信验证码,手机验证码平台,短信验证码,虚拟手机号，手机验证码，手机验证码平台，验证码接收平台，短信验证码接收平台，手机验证码接收平台，短信接收平台，接码网站，短信接收平台，验证码接收，免费短信,中國">
+    <title>小伟聚合免费接码平台</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/mine.css">
+    <link rel="stylesheet" href="./css/animate.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-paginator/bootstrap-paginator.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="./js/wow.min.js"></script>
+    <script src="./js/mine.js"></script>
+    <script src="./js/template-web.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.js"></script>
+    <script data-ad-client="ca-pub-7384725227124412" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script type="text/template" id="newLIist">
+        <% for(var i=0;i<5;i++){ %>
+          <tr>
+            <td><%= i+1%></td>
+            <td><%=items[i].smsNumber%></td>
+            <td><%=items[i].smsContent%></td>
+            <td><%=items[i].smsDate%></td>
+          </tr>
+        <% }%>
+       </script>
+
+    <script type="text/template" id="historyLIist">
+        <% for(var i=5;i<items.length;i++){ %>
+          <tr>
+            <td><%= i-4%></td>
+            <td><%=items[i].smsNumber%></td>
+            <td><%=items[i].smsContent%></td>
+            <td><%=items[i].smsDate%></td>
+          </tr>
+        <% }%>
+       </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar top"></span>
+                    <span class="icon-bar middle"></span>
+                    <span class="icon-bar bottom"></span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <section id="list" style="min-height: 805px">
+        <div class="container" style="overflow-x: auto;display: block">
+            <div class="row wow fadeIn" data-wow-duration="0s">
+
+                <!-- Please tell those who are blind, these area codes: +86、+852、+853、+886 belong to one China! -->
+                <script type="text/template" id="lists">
+                    <% for(var i=0;i<items.length;i++){ %>
+                        <div class="col-md-4">
+                            <div class="course">
+                                <img style="height:50px;margin-top:10px"
+                                src=<%= items[i].flag%>
+                                    class="img-responsive" alt=""/>
+                                <p class='number' %>+<%= items[i].code%> <span class="btnCopy" data-clipboard-text=<%= items[i].PhoNum%>><%= items[i].PhoNum%> <span style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span></p>
+                                <!--  btn-primary -->
+                                
+                                <a href=http://z-sms.com/lv?pho_num=<%= items[i].PhoNum%> class="btn" role="button" data-PhoNum=<%= items[i].PhoNum%> data-countNum=<%= items[i].count%>>
+                                    <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                                    阅读短信
+                                </a>
+   
+                            </div>
+                        </div>
+                        
+                    <% }%>
+                   </script>
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8531abe9d862853592e0d527a8d411fb/8718367adab44aed30126fffbe1c8701a18bfb49.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+86 <span class="btnCopy" data-clipboard-text="17137796247">17137796247
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://www.mffac.com/info/8617137796247.html" class="btn" role="button"
+                            data-phonum="17137796247" data-countnum="31401">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8531abe9d862853592e0d527a8d411fb/8718367adab44aed30126fffbe1c8701a18bfb49.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+86 <span class="btnCopy" data-clipboard-text="17130604963">17130604963
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://www.mffac.com/info/8617130604963.html" class="btn" role="button"
+                            data-phonum="17137796247" data-countnum="31401">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8531abe9d862853592e0d527a8d411fb/8718367adab44aed30126fffbe1c8701a18bfb49.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+86 <span class="btnCopy" data-clipboard-text="17150522475">17150522475
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://www.mffac.com/info/8617150522475.html" class="btn" role="button"
+                            data-phonum="17137796247" data-countnum="31401">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8531abe9d862853592e0d527a8d411fb/8718367adab44aed30126fffbe1c8701a18bfb49.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+86 <span class="btnCopy" data-clipboard-text="17191917455">17191917455
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://www.mffac.com/info/8617191917455.html" class="btn" role="button"
+                            data-phonum="17137796247" data-countnum="31401">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8eb4553c2a3fb80e0cd166d10eea4813/b8014a90f603738d262a552fb81bb051f819ec5f.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+44 <span class="btnCopy" data-clipboard-text="7878233743">7878233743
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://mianfeijiema.com/sms/447878233743" class="btn" role="button"
+                            data-phonum="7365753569" data-countnum="11718">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8eb4553c2a3fb80e0cd166d10eea4813/b8014a90f603738d262a552fb81bb051f819ec5f.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+44 <span class="btnCopy" data-clipboard-text="+44 7727229479">7727229479
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://mianfeijiema.com/sms/447727229479" class="btn" role="button"
+                            data-phonum="7365753569" data-countnum="11718">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=8eb4553c2a3fb80e0cd166d10eea4813/b8014a90f603738d262a552fb81bb051f819ec5f.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+44 <span class="btnCopy"
+                                data-clipboard-text="7490418435">7490418435<span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://yunduanxin.net/info/447490418435/" class="btn" role="button"
+                            data-phonum="7365753569" data-countnum="11718">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=0cf4085a0ee9390156028a3843d733da/1f178a82b9014a90862ef6c7a6773912b31beebc.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+1 <span class="btnCopy" data-clipboard-text="6315104524">6315104524
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://yunduanxin.net/info/16315104524/" class="btn" role="button"
+                            data-phonum="9173498465" data-countnum="55">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=0cf4085a0ee9390156028a3843d733da/1f178a82b9014a90862ef6c7a6773912b31beebc.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+1 <span class="btnCopy" data-clipboard-text="9787195249">9787195249
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://yunduanxin.net/info/19787195249/" class="btn" role="button"
+                            data-phonum="9173498465" data-countnum="55">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <img style="height:50px;margin-top:10px"
+                            src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=0cf4085a0ee9390156028a3843d733da/1f178a82b9014a90862ef6c7a6773912b31beebc.jpg"
+                            class="img-responsive" alt="">
+                        <p class="number" %="">+1 <span class="btnCopy" data-clipboard-text="3026012882">3026012882
+                                <span
+                                    style="font-size:12px;color:#00f5bc;border:1px solid #fff;position:relative;top:-3px;left:6px;cursor:pointer">复制</span></span>
+                        </p>
+                        <!--  btn-primary -->
+
+                        <a href="https://yunduanxin.net/info/13026012882/" class="btn" role="button"
+                            data-phonum="9173498465" data-countnum="55">
+                            <span class="glyphicon glyphicon-envelope" style="font-size: 16px;top:3px"></span>
+                            阅读短信
+                        </a>
+
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    // <p>累计收短信<span class="sum"><%= items[i].count%> </span>条</p>
+                    //实例化Clipboard对象并把复制按钮的类.btn传进去
+                    var clipboard = new Clipboard('.btnCopy');
+                    clipboard.on('success', function (e) {
+                        if ($("#toast-container").length > 0) {
+                            // 用于避免用户快速重复点击复制或者留言 消息提示位置错乱纠正
+                            return
+                        }
+                        e.clearSelection();
+                        toastr.success('复制成功:' + e.text);
+                        $("#toast-container").css("top", '2%');
+                        $("#toast-container").css("left", ($('body').width() - ($('#toast-container').width())) / 2 + 'px');
+                    });
+
+                    clipboard.on('error', function (e) {
+                        toastr.success('复制成功:' + e.text);
+                        $("#toast-container").css("top", '2%');
+                        $("#toast-container").css("left", ($('body').width() - ($('#toast-container').width())) / 2 + 'px');
+                    });
+                </script>
+                <div class="list">
+                </div>
+
+            </div>
+
+            <div class="smsContent" style="display: none">
+                <h4 style="color:#fff">最新短信内容</h4>
+                <div class="tablist" style="overflow-x: auto;text-align: left;">
+                    <table class="table" style="background: #fff;color:#000;width: 1140px;">
+                        <thead>
+                            <tr>
+                                <th style="width: 0px;">#</th>
+                                <th style="width: 0px;">电话号码</th>
+                                <th>短信详情</th>
+                                <th style="width: 155px;">接收时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="newList">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 style="color:#fff">历史短信内容</h4>
+
+                <div class="tablist" style="overflow-x: auto;text-align: left;">
+                    <table class="table" style="background: #fff;color:#000;width: 1140px">
+                        <thead>
+                            <tr>
+                                <th style="width: 0px;">#</th>
+                                <th style="width: 0px;">电话号码</th>
+                                <th>短信详情</th>
+                                <th style="width: 155px;">接收时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="historyLIist">
+
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pagination pagination-sm pull-right" style="text-align: left;display: none">
+                </ul>
+            </div>
+        </div>
+
+    </section>
+    <!--联系我们-->
+    <div id="gg" style="position:absolute;left:-99999px">
+    </div>
+
+    <script>
+    </script>
+    <script src="./js/base.js"></script>
+    <script src="./js/jquery-3.4.min.js"></script>
+    <script>
+        setInterval(function () {
+        }, 500)
+    </script>
+
+    <script>
+        var result = [{ "PhoID": "5", "PortNum": "2", "PhoNum": "18866478549", "time": "2020-02-08 17:03:02", "count": "433085", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "17", "PortNum": "2", "PhoNum": "18866478984", "time": "2020-02-08 17:03:52", "count": "339492", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "19", "PortNum": "2", "PhoNum": "9163719193", "time": "2020-02-08 16:57:08", "count": "15432", "code": "7", "flag": "https:\/\/dss0.baidu.com\/7Po3dSag_xI4khGko9WTAnF6hhy\/baike\/pic\/item\/11385343fbf2b211cc4e495bc68065380cd78e47.png" }, { "PhoID": "21", "PortNum": "2", "PhoNum": "7365753569", "time": "2020-02-08 16:11:38", "count": "11718", "code": "44", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8eb4553c2a3fb80e0cd166d10eea4813\/b8014a90f603738d262a552fb81bb051f819ec5f.jpg" }, { "PhoID": "45", "PortNum": "2", "PhoNum": "647713590", "time": "2020-02-08 16:51:52", "count": "3035", "code": "66", "flag": "https:\/\/dss0.bdstatic.com\/6Ox1bjeh1BF3odCf\/it\/u=101387449,3682495292&fm=74&app=80&f=PNG&size=f121,90?sec=1880279984&t=8a51ba8ba8a4470007ac39b5c71fbec1" }, { "PhoID": "35", "PortNum": "3", "PhoNum": "17135192845", "time": "2020-02-08 17:01:47", "count": "108302", "code": "86", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/pic\/item\/d01373f082025aaffb4dc835f5edab64024f1ad4.jpg" }, { "PhoID": "4", "PortNum": "3", "PhoNum": "18866674052", "time": "2020-02-08 17:03:39", "count": "234002", "code": "86", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/pic\/item\/d01373f082025aaffb4dc835f5edab64024f1ad4.jpg" }, { "PhoID": "9", "PortNum": "3", "PhoNum": "134992087", "time": "2020-02-08 17:03:33", "count": "9449", "code": "60", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=6e1857ba912bd40742c7d4fb43b2f96c\/b17eca8065380cd7f61f6b7fa744ad345982811b.jpg" }, { "PhoID": "48", "PortNum": "3", "PhoNum": "9274371624", "time": "2020-02-08 16:50:18", "count": "3004", "code": "63", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=70c9a8a5c2fcc3ceb4c0ce35aa7eb1b5\/d62a6059252dd42a1fed252c093b5bb5c8eab854.jpg" }, { "PhoID": "47", "PortNum": "3", "PhoNum": "9173498465", "time": "2019-12-13 00:13:29", "count": "55", "code": "1", "flag": "https:\/\/gss0.bdstatic.com\/94o3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=0cf4085a0ee9390156028a3843d733da\/1f178a82b9014a90862ef6c7a6773912b31beebc.jpg" }, { "PhoID": "33", "PortNum": "4", "PhoNum": "17135192846", "time": "2020-02-08 16:57:27", "count": "91886", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "20", "PortNum": "4", "PhoNum": "7365501776", "time": "2020-02-08 16:38:46", "count": "10112", "code": "44", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8eb4553c2a3fb80e0cd166d10eea4813\/b8014a90f603738d262a552fb81bb051f819ec5f.jpg" }, { "PhoID": "22", "PortNum": "4", "PhoNum": "7728928245", "time": "2019-12-30 19:25:41", "count": "9733", "code": "44", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8eb4553c2a3fb80e0cd166d10eea4813\/b8014a90f603738d262a552fb81bb051f819ec5f.jpg" }, { "PhoID": "56", "PortNum": "4", "PhoNum": "17045621792", "time": "2020-02-08 17:01:03", "count": "31401", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "29", "PortNum": "4", "PhoNum": "63036640", "time": "2020-02-08 16:43:22", "count": "11629", "code": "853", "flag": "https:\/\/gss0.bdstatic.com\/94o3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=f924e57cd71373f0f53f68999c342cc6\/caef76094b36acaf06baebfb7ad98d1001e99c5a.jpg" }, { "PhoID": "53", "PortNum": "4", "PhoNum": "17045621780", "time": "2019-12-21 23:27:08", "count": "555", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "54", "PortNum": "4", "PhoNum": "17045621797", "time": "2020-02-08 17:04:12", "count": "27123", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "55", "PortNum": "4", "PhoNum": "17045621793", "time": "2020-02-08 17:03:21", "count": "25151", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "37", "PortNum": "4", "PhoNum": "17045621813", "time": "2020-02-08 16:40:27", "count": "72675", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "44", "PortNum": "4", "PhoNum": "901386423", "time": "2019-12-14 00:04:26", "count": "55", "code": "81", "flag": "https:\/\/gss1.bdstatic.com\/-vo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=e0365532e9dde711e7d244f09fd4a926\/dbb44aed2e738bd486485706ad8b87d6277ff998.jpg" }, { "PhoID": "38", "PortNum": "4", "PhoNum": "17135192848", "time": "2020-02-08 17:02:18", "count": "70194", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "46", "PortNum": "4", "PhoNum": "108890311", "time": "2019-12-15 00:06:19", "count": "55", "code": "82", "flag": "https:\/\/dss0.bdstatic.com\/6Ox1bjeh1BF3odCf\/it\/u=2227122262,1255429195&fm=74&app=80&f=JPG&size=f121,90?sec=1880279984&t=2524115d555f6c6402e139464718e544" }, { "PhoID": "43", "PortNum": "4", "PhoNum": "9796795886", "time": "2020-02-08 16:55:54", "count": "13069", "code": "95", "flag": "https:\/\/gss2.bdstatic.com\/9fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=1632630630292df597c3ab13840a3b5d\/b999a9014c086e069f49996208087bf40ad1cb32.jpg" }, { "PhoID": "51", "PortNum": "5", "PhoNum": "17135192848", "time": "2020-02-08 17:02:18", "count": "26026", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "18", "PortNum": "5", "PhoNum": "18866674071", "time": "2020-01-02 02:57:46", "count": "135647", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "24", "PortNum": "5", "PhoNum": "54837409", "time": "2020-01-19 17:59:23", "count": "17793", "code": "852", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=e60adfc055ee3d6d22c680cd7b2d0a1f\/d0c8a786c9177f3ed03e306a7ccf3bc79f3d564b.jpg" }, { "PhoID": "52", "PortNum": "5", "PhoNum": "17045621776", "time": "2020-02-08 17:04:07", "count": "29508", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "50", "PortNum": "5", "PhoNum": "17135192847", "time": "2020-02-08 17:03:26", "count": "36074", "code": "86", "flag": "https:\/\/gss2.bdstatic.com\/-fo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8531abe9d862853592e0d527a8d411fb\/8718367adab44aed30126fffbe1c8701a18bfb49.jpg" }, { "PhoID": "26", "PortNum": "6", "PhoNum": "63035817", "time": "2020-02-08 16:50:18", "count": "10952", "code": "853", "flag": "https:\/\/gss0.bdstatic.com\/94o3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=f924e57cd71373f0f53f68999c342cc6\/caef76094b36acaf06baebfb7ad98d1001e99c5a.jpg" }, { "PhoID": "6", "PortNum": "16", "PhoNum": "7988235573", "time": "2020-02-08 17:01:51", "count": "16753", "code": "44", "flag": "https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268%3Bg%3D0\/sign=8eb4553c2a3fb80e0cd166d10eea4813\/b8014a90f603738d262a552fb81bb051f819ec5f.jpg" }];
+        for (var i = 0; i < result.length; i++) {
+            var T = new Date()
+            var data1 = String(result[i].time);
+            var time1 = data1.substr(8, 20).split(/[\s\:]/);
+            var S1 = time1[0] * 86400 + time1[1] * 3600 + time1[2] * 60 + time1[3] * 1
+            var S2 = T.getDate() * 86400 + T.getHours() * 3600 + T.getMinutes() * 60 + T.getSeconds() * 1
+            if ((S2 - S1) < 60) {
+                // result[i].time = (S2 - S1) + '秒'
+            } else if ((S2 - S1) < 3600) {
+                // result[i].time = parseInt((S2 - S1) / 60) + '分钟'
+            } else if ((S2 - S1) < 86400) {
+                // result[i].time = parseInt((S2 - S1) / 3600) + '小时'
+            } else {
+                // result[i].time = '大于1天'
+            }
+        }
+        var listss = template("lists", { "items": result });
+        $(".list").html(listss);
+        var gg = $("");
+    </script>
+
+</body>
+
+</html>
