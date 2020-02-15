@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>pornhub Valentine&#39;s Day benefits, free pornhub premium</title>
-    <url>/2020/02/14/lsj-6/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2020/02/14/GKAmNDp5csHSPBn.jpg" alt="pornhub"><br><a id="more"></a></p>
-<h1 id="pornhub-Valentine-benefits"><a href="#pornhub-Valentine-benefits" class="headerlink" title="pornhub Valentine benefits"></a>pornhub Valentine benefits</h1><p>pornhub Valentine’s Day Benefits, Free Premium Member Benefits<br><img src="https://i.loli.net/2020/02/14/GKAmNDp5csHSPBn.jpg" alt="photo_2020-02-14_12-40-05.jpg"></p>
-<p>Pickup address <a href="https://cn.pornhub.com/valentines" target="_blank" rel="noopener">https://cn.pornhub.com/valentines</a></p>
+    <title>如何查询比特币和以太坊钱包余额和交易信息</title>
+    <url>/2020/02/15/bitcoin-42/</url>
+    <content><![CDATA[<p>正确通过比特币浏览器查询比特币和以太坊交易信息<br><a id="more"></a></p>
+<h1 id="比特币区块浏览器原理"><a href="#比特币区块浏览器原理" class="headerlink" title="比特币区块浏览器原理"></a>比特币区块浏览器原理</h1><p>比特币是一种分布式数据库，他是公开透明的，所有的钱包信息、交易信息和区块信息都可查的，都是可溯源的，任何人不能抵赖，也是十分安全的。<br>有很多区块浏览器，他们是超级节点，他们保存着比特币网络的全部信息，所以通过比特币区块浏览器可以查询到所以的信息。<br>同理，以太坊区块浏览器也同理。<br><img src="https://i.loli.net/2020/02/15/mAf6bxti8PSrIcE.png" alt="比特币浏览器"></p>
+<h1 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h1><ol>
+<li>通过钱包地址可以查询你的钱包余额和所以的交易信息<br><img src="https://i.loli.net/2020/02/15/qrJYt4K9ZamOlho.png" alt="以太坊浏览器"></li>
+<li>通过交易号查询交易信息</li>
+<li>通过区块链号去查询</li>
+</ol>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+]]></content>
+      <categories>
+        <category>比特币</category>
+      </categories>
+      <tags>
+        <tag>比特币浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>how to query the balance and transaction information of bitcoin and Ethereum wallets</title>
+    <url>/2020/02/15/bitcoin-43/</url>
+    <content><![CDATA[<p>Correctly query transaction information of bitcoin and Ethereum through bitcoin browser</p>
+<a id="more"></a>
+<p>#Bitcoin block browser principle</p>
+<p>Bitcoin is a kind of distributed database. It is open and transparent. All wallet information, transaction information and block information are traceable. No one can deny it, and it is very safe.</p>
+<p>There are many block browsers, they are super nodes, they save all the information of bitcoin network, so you can query all the information through bitcoin block browser.</p>
+<p>The same goes for Ethereum block browsers.<br><img src="https://i.loli.net/2020/02/15/mAf6bxti8PSrIcE.png" alt="bitcoin explore"></p>
+<p>#Query method</p>
+<ol>
+<li>You can query your wallet balance and all transaction information through the wallet address</li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/15/qrJYt4K9ZamOlho.png" alt="Ethereum explore"></p>
+<ol start="2">
+<li><p>Query transaction information through transaction number</p>
+</li>
+<li><p>Query by blockchain number</p>
+</li>
+</ol>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
 <script>
@@ -17,11 +57,81 @@
 ]]></content>
   </entry>
   <entry>
+    <title>What is a Bitcoin Node? Segmenting Bitcoin Nodes</title>
+    <url>/2020/02/15/bitcoin-41/</url>
+    <content><![CDATA[<p>Bitcoin node definition<br><a id="more"></a></p>
+<h1 id="Bitcoin-node"><a href="#Bitcoin-node" class="headerlink" title="Bitcoin node"></a>Bitcoin node</h1><p>Generally speaking, Bitcoin nodes refer to any device connected to the Bitcoin blockchain network, such as your Bitcoin wallet, super node, full node, and mining node. The above nodes are described in detail below.</p>
+<h1 id="Full-node"><a href="#Full-node" class="headerlink" title="Full node"></a>Full node</h1><p><img src="https://i.loli.net/2020/02/15/WXCdtkwzAZSN68R.png" alt="bitcoin core"><br>Download software from bitcoin core<br>Download address <a href="https://bitcoin.org/en/download" target="_blank" rel="noopener">https://bitcoin.org/en/download</a></p>
+<p>The initial synchronization of Bitcoin Core will take time and download a lot of data. You should ensure that you have enough bandwidth and storage space to accommodate the full blockchain size (over 200GB). If you have a good Internet connection, you can help enhance the network by making your PC running Bitcoin Core and the open state of port 8333.</p>
+<p>With bitcoin core software, you can back up data in the Bitcoin network. You must be online to download sync data and upload sync information.</p>
+<h1 id="Super-Node"><a href="#Super-Node" class="headerlink" title="Super Node"></a>Super Node</h1><p>The open full node has 24 hours online, and the network bandwidth must be high enough to quickly distribute data to other full nodes.</p>
+<h1 id="Mining-node"><a href="#Mining-node" class="headerlink" title="Mining node"></a>Mining node</h1><p><img src="https://i.loli.net/2020/02/15/34PHkS8DYi1bKme.jpg" alt="miner"><br>The mining node is also a full node, which holds the Bitcoin blockchain information. The mining node participates in the problem solving of the Bitcoin network. Once the decryption is successful, it adds its newly created block to the main network and obtains a reward.<br>Mining nodes can be personal or pool nodes.</p>
+<h1 id="Wallet-node"><a href="#Wallet-node" class="headerlink" title="Wallet node"></a>Wallet node</h1><p><img src="https://i.loli.net/2020/02/15/SmW9YZIlOo8UPnq.png" alt="wallet"><br>The wallet node can be a mobile phone or computer wallet. The wallet node does not need to back up all the bitcoin network information. The wallet node only participates in the P2P peer-to-peer transaction. The transaction information is waiting for the mining node to obtain the accounting right, and then the transaction information is recorded in a new block. In addition, transactions need to be rewarded with miners.</p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+]]></content>
+      <categories>
+        <category>Bitcoin</category>
+      </categories>
+      <tags>
+        <tag>Bitcoin nodes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币节点是什么？细分比特币节点</title>
+    <url>/2020/02/15/bitcoin-40/</url>
+    <content><![CDATA[<p>比特币节点定义<br><a id="more"></a></p>
+<h1 id="比特币节点"><a href="#比特币节点" class="headerlink" title="比特币节点"></a>比特币节点</h1><p>一般我们说比特币节点，泛指连接到比特币区块链网络中任何设备，比如你的比特币钱包、超级节点、全节点和挖矿节点等等。下面对以上的节点进行详细说明。</p>
+<h1 id="全节点"><a href="#全节点" class="headerlink" title="全节点"></a>全节点</h1><p><img src="https://i.loli.net/2020/02/15/WXCdtkwzAZSN68R.png" alt="bitcoin core"><br>从bitcoin core比特核心下载软件<br>下载地址 <a href="https://bitcoin.org/en/download" target="_blank" rel="noopener">https://bitcoin.org/en/download</a></p>
+<p>Bitcoin Core的初始同步将花费时间并下载大量数据。您应确保您有足够的带宽和存储空间来容纳完整的区块链大小（超过200GB）。如果您拥有良好的Internet连接，则可以通过使PC运行比特币核心和端口8333的开放状态来帮助增强网络。</p>
+<p>通过bitcoin core软件，你可以备份比特币网络中数据。你必须联网去下载同步数据和上传同步信息。</p>
+<h1 id="超级节点"><a href="#超级节点" class="headerlink" title="超级节点"></a>超级节点</h1><p>公开的全节点，具有24小时在线，网络带宽必须足够高，用于数据快速分发给其他的全节点。</p>
+<h1 id="挖矿节点"><a href="#挖矿节点" class="headerlink" title="挖矿节点"></a>挖矿节点</h1><p><img src="https://i.loli.net/2020/02/15/34PHkS8DYi1bKme.jpg" alt="miner"><br>挖矿节点也是一个全节点，保存了比特币区块链信息。挖矿节点参与比特币网络的解题，一旦解密成功，将自己的新建立的区块加到主网络中，并取得奖励。<br>挖矿节点可以是个人的或者是矿池节点。</p>
+<h1 id="钱包节点"><a href="#钱包节点" class="headerlink" title="钱包节点"></a>钱包节点</h1><p><img src="https://i.loli.net/2020/02/15/SmW9YZIlOo8UPnq.png" alt="wallet"><br>钱包节点可以是手机或者电脑的钱包。钱包节点不用备份所有的比特币网络信息，钱包节点只是参与到P2P点对点交易中，交易信息等待挖矿节点去取得记账权之后，把交易信息记录到新的区块中。并且，交易需要花费费用奖励给矿工。</p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+]]></content>
+      <categories>
+        <category>比特币</category>
+      </categories>
+      <tags>
+        <tag>比特币节点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>pornhub情人节最新福利，免费pornhub premium</title>
     <url>/2020/02/14/lsj-5/</url>
     <content><![CDATA[<p><img src="https://i.loli.net/2020/02/14/GKAmNDp5csHSPBn.jpg" alt="pornhub"><br><a id="more"></a></p>
 <h1 id="pornhub情人节福利"><a href="#pornhub情人节福利" class="headerlink" title="pornhub情人节福利"></a>pornhub情人节福利</h1><p>pornhub情人节最新福利，免费premium会员福利<br><img src="https://i.loli.net/2020/02/14/GKAmNDp5csHSPBn.jpg" alt="photo_2020-02-14_12-40-05.jpg"></p>
 <p>领取地址 <a href="https://cn.pornhub.com/valentines" target="_blank" rel="noopener">https://cn.pornhub.com/valentines</a></p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>pornhub Valentine&#39;s Day benefits, free pornhub premium</title>
+    <url>/2020/02/14/lsj-6/</url>
+    <content><![CDATA[<p><img src="https://i.loli.net/2020/02/14/GKAmNDp5csHSPBn.jpg" alt="pornhub"><br><a id="more"></a></p>
+<h1 id="pornhub-Valentine-benefits"><a href="#pornhub-Valentine-benefits" class="headerlink" title="pornhub Valentine benefits"></a>pornhub Valentine benefits</h1><p>pornhub Valentine’s Day Benefits, Free Premium Member Benefits<br><img src="https://i.loli.net/2020/02/14/GKAmNDp5csHSPBn.jpg" alt="photo_2020-02-14_12-40-05.jpg"></p>
+<p>Pickup address <a href="https://cn.pornhub.com/valentines" target="_blank" rel="noopener">https://cn.pornhub.com/valentines</a></p>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
 <script>
