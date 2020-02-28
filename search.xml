@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>How to building your own darkweb website</title>
+    <url>/2020/02/28/darkweb-webbuild-en/</url>
+    <content><![CDATA[<p>Latest Dark Web Website Construction and Dark Web Domain Application Method<br><a id="more"></a></p>
+<h1 id="Tor-project"><a href="#Tor-project" class="headerlink" title="Tor project"></a>Tor project</h1><p>Tor project is a secret project of the U.S. Navy, which was later open-source used in the real anonymous network. In tor’s network, your real IP address and any other information related to you that is exposed to the Internet will be hidden, which really protects users. Tor project not only provides <a href="https://ssrshare.github.io/2019/06/29/darkweb-6 /">Client</a> for ordinary users , but also provides .Onion domain name and services. Using. Onion domain name can hide the real IP address of your website.</p>
+<h1 id="Construction-preparation-materials-of-darkweb-website"><a href="#Construction-preparation-materials-of-darkweb-website" class="headerlink" title="Construction preparation materials of darkweb website"></a>Construction preparation materials of darkweb website</h1><ul>
+<li><p>server</p>
+</li>
+<li><p>Website building related technologies</p>
+</li>
+</ul>
+<h2 id="Server-selection"><a href="#Server-selection" class="headerlink" title="Server selection"></a>Server selection</h2><p>How do you want to really hide yourself, you need to do the following steps</p>
+<ul>
+<li><p>It is recommended to use Debian or Ubuntu servers. Tor official documents support better</p>
+</li>
+<li><p>The server is only used for the tor website</p>
+</li>
+<li><p>Anonymous payment purchase server</p>
+</li>
+<li><p>Don’t accept and send emails</p>
+</li>
+</ul>
+<h2 id="Website-building"><a href="#Website-building" class="headerlink" title="Website building"></a>Website building</h2><ul>
+<li><p>Unlimited technologies can be PHP, python, Java or static web pages</p>
+</li>
+<li><p>Don’t use weak password</p>
+</li>
+<li><p>Don’t use JavaScript</p>
+</li>
+<li><p>Don’t load resources from outside, all resources must be on the server</p>
+</li>
+<li><p>Don’t use 80 port, change to other port</p>
+</li>
+</ul>
+<h1 id="Start-building"><a href="#Start-building" class="headerlink" title="Start building"></a>Start building</h1><ul>
+<li><p>Install nginx or Apache. Take nginx for example (nginx is the most widely used)</p>
+</li>
+<li><p>Edit nginx profile</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Enter the command sudo vi /etc/nginx/sites-available/default</span><br><span class="line"></span><br><span class="line">Alter file</span><br><span class="line"></span><br><span class="line">Server &#123;</span><br><span class="line"></span><br><span class="line">listen 127.0.0.1:xxxx;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">xxxx is your port number. Don&apos;t set it to 80 for security</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Restart service sudo service nginx restart</span><br></pre></td></tr></table></figure>
+<h2 id="Take-Debian-server-as-an-example-to-build-a-darkweb-site"><a href="#Take-Debian-server-as-an-example-to-build-a-darkweb-site" class="headerlink" title="Take Debian server as an example to build a darkweb site"></a>Take Debian server as an example to build a darkweb site</h2><h2 id="Direct-installation"><a href="#Direct-installation" class="headerlink" title="Direct installation"></a>Direct installation</h2><p>Generally, you can install the tor service directly through apt <code>apt install tor</code></p>
+<p>If not, do the following</p>
+<ol>
+<li>Modify source.list</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">Add the following two lines at the end</span><br><span class="line"></span><br><span class="line">deb https://deb.torproject.org/torproject.org stretch main</span><br><span class="line"></span><br><span class="line">deb-src https://deb.torproject.org/torproject.org stretch main</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Add Secret key</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import</span><br><span class="line"></span><br><span class="line"># gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>Installation</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt update</span><br><span class="line">sudo apt-get install tor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DNS Selection</p>
+</li>
+</ol>
+<p>The default is deb.torproject.org<br>The alternatives are deb-master.torproject.org, mirror.netcologne.de and tor.mirror.youam.de</p>
+<ol start="5">
+<li>Edit tor configuration file</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi /etc/tor/torrc</span><br><span class="line"></span><br><span class="line">Add to</span><br><span class="line"></span><br><span class="line">HiddenServiceDir /var/lib/tor/hidden_service/</span><br><span class="line"></span><br><span class="line">HiddenServicePort 80 127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>start tor</li>
+</ol>
+<p><code>sudo service tor start</code></p>
+<p>Once started, your domain name will be generated</p>
+<ol start="7">
+<li>Domain name</li>
+</ol>
+<p><code>cat /var/lib/tor/hidden_service/hostname</code></p>
+<p><img src="https://i.loli.net/2020/02/27/zvoldgwrnm973qp.jpg" alt="dark network domain name"></p>
+<ol start="8">
+<li>Browse the website</li>
+</ol>
+<p>After that, you can visit the web page through the tor browser client</p>
+<p><img src="https://i.loli.net/2020/02/27/jshblxzmhrxev6u.PNG" alt="dark network building"></p>
+<h1 id="Advanced-Skills"><a href="#Advanced-Skills" class="headerlink" title="Advanced Skills"></a>Advanced Skills</h1><p>Official documents for specific website construction - <a href="https://2019.www.torproject.org/docs/debian.html.EN" target="_blank" rel="noopener">https://2019.www.torproject.org/docs/debian.html.En</a></p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+]]></content>
+      <categories>
+        <category>Dark Web</category>
+      </categories>
+      <tags>
+        <tag>Dark Web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最新暗网网站搭建和暗网域名申请方法</title>
     <url>/2020/02/27/darkweb-webbuild/</url>
     <content><![CDATA[<p>最新暗网网站搭建和暗网域名申请方法<br><a id="more"></a></p>
@@ -12,7 +107,7 @@
 <li>服务器只用来做tor网站不做其他的任何东西</li>
 <li>匿名支付购买服务器</li>
 <li>不要在服务器上运行 Tor 中继，因为 Tor 中继的ip是暴露的</li>
-<li>不要接受和发生电子邮件</li>
+<li>不要接受和发送电子邮件</li>
 </ul>
 <h2 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h2><ul>
 <li>不限技术可以是php、python和Java等，也可以是纯静态的网页</li>
@@ -32,7 +127,7 @@
 </ul>
 <ol>
 <li><p>修改source.list</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line">最后加下面这两行</span><br><span class="line">eb https://deb.torproject.org/torproject.org stretch main</span><br><span class="line">deb-src https://deb.torproject.org/torproject.org stretch main</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line">最后加下面这两行</span><br><span class="line">deb https://deb.torproject.org/torproject.org stretch main</span><br><span class="line">deb-src https://deb.torproject.org/torproject.org stretch main</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加密钥</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import</span><br><span class="line"># gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -</span><br></pre></td></tr></table></figure>
@@ -133,29 +228,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Real Deaths from New Coronavirus</title>
-    <url>/2020/02/25/sars-17/</url>
-    <content><![CDATA[<p>New Coronavirus: Real Number of Deaths Caused by nCov<br><img src="https://i.loli.net/2020/02/25/3UCPxcKtTe57pLQ.png" alt="nCov"><br><a id="more"></a></p>
-<h1 id="Official-data-As-of-February-25-2020"><a href="#Official-data-As-of-February-25-2020" class="headerlink" title="Official data (As of February 25, 2020)"></a>Official data (As of February 25, 2020)</h1><h2 id="A-total-of-77779-cases-have-been-confirmed-in-China-of-which-2824-are-suspected-27-353-have-been-cured-9-126-have-been-seriously-ill-and-2-666-have-died"><a href="#A-total-of-77779-cases-have-been-confirmed-in-China-of-which-2824-are-suspected-27-353-have-been-cured-9-126-have-been-seriously-ill-and-2-666-have-died" class="headerlink" title="A total of 77779 cases have been confirmed in China, of which 2824 are suspected, 27,353 have been cured, 9,126 have been seriously ill, and 2,666 have died"></a>A total of 77779 cases have been confirmed in China, of which 2824 are suspected, 27,353 have been cured, 9,126 have been seriously ill, and 2,666 have died</h2><h2 id="Foreign-epidemic-report-2345-cases-were-confirmed-182-cases-were-cured-31-cases-died"><a href="#Foreign-epidemic-report-2345-cases-were-confirmed-182-cases-were-cured-31-cases-died" class="headerlink" title="Foreign epidemic report, 2345 cases were confirmed, 182 cases were cured, 31 cases died"></a>Foreign epidemic report, 2345 cases were confirmed, 182 cases were cured, 31 cases died</h2><p><img src="https://i.loli.net/2020/02/25/3UCPxcKtTe57pLQ.png" alt="nCov"></p>
-<h1 id="Number-of-deaths-caused-by-truly-new-coronavirus"><a href="#Number-of-deaths-caused-by-truly-new-coronavirus" class="headerlink" title="Number of deaths caused by truly new coronavirus"></a>Number of deaths caused by truly new coronavirus</h1><p>The official data is that there were 2,697 deaths worldwide, but the actual number of deaths was more than this number. Although the mortality rate of the new coronavirus is lower than that of SARS and the United States influenza, official reports have found that new coronavirus pneumonia may show symptoms of multiple organ failure, which indicates that in many cases, patients with the new coronavirus died of other organ failure Diseases such as heart disease and kidney disease, rather than death from pneumonia-according to a wealth of reliable medical data. At the same time, carriers of this virus have a probability that the Nucleic acid detection is negative, and there are no obvious symptoms-for example, recently, a woman  had eight nucleic acid detection were negative in China.</p>
-<p><img src="https://i.loli.net/2020/02/25/Z1YasDmylCFgn4u.png" alt="nCov"></p>
-<p>This shows that the nucleic acid detection is not a 100% accurate basis for confirming the diagnosis of the new coronavirus. Then, many patients who have recently died may be patients with the new coronavirus, but no diagnosis has been made. The virus is  very cunning. Possibility of mutation-no longer pneumonia virus.</p>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<p>In summary, the death toll caused by the new coronavirus is still difficult to estimate, and new testing methods may have been invented and new symptoms of the disease discovered.</p>
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="http://ssrshare.github.io/2020/02/15/sars-13/">Latest Pneumonia Epidemic Information in China</a></li></ul></div>]]></content>
-      <categories>
-        <category>Wuhan Pneumonia</category>
-      </categories>
-      <tags>
-        <tag>Wuhan pneumonia</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新型冠状病毒——武汉肺炎真实的死亡人数</title>
     <url>/2020/02/25/sars-16/</url>
     <content><![CDATA[<p>新型冠状病毒——nCov武汉肺炎造成死亡的真正人数<br><img src="https://i.loli.net/2020/02/25/3UCPxcKtTe57pLQ.png" alt="nCov"><br><a id="more"></a></p>
@@ -247,6 +319,29 @@
       </categories>
       <tags>
         <tag>武汉肺炎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Real Deaths from New Coronavirus</title>
+    <url>/2020/02/25/sars-17/</url>
+    <content><![CDATA[<p>New Coronavirus: Real Number of Deaths Caused by nCov<br><img src="https://i.loli.net/2020/02/25/3UCPxcKtTe57pLQ.png" alt="nCov"><br><a id="more"></a></p>
+<h1 id="Official-data-As-of-February-25-2020"><a href="#Official-data-As-of-February-25-2020" class="headerlink" title="Official data (As of February 25, 2020)"></a>Official data (As of February 25, 2020)</h1><h2 id="A-total-of-77779-cases-have-been-confirmed-in-China-of-which-2824-are-suspected-27-353-have-been-cured-9-126-have-been-seriously-ill-and-2-666-have-died"><a href="#A-total-of-77779-cases-have-been-confirmed-in-China-of-which-2824-are-suspected-27-353-have-been-cured-9-126-have-been-seriously-ill-and-2-666-have-died" class="headerlink" title="A total of 77779 cases have been confirmed in China, of which 2824 are suspected, 27,353 have been cured, 9,126 have been seriously ill, and 2,666 have died"></a>A total of 77779 cases have been confirmed in China, of which 2824 are suspected, 27,353 have been cured, 9,126 have been seriously ill, and 2,666 have died</h2><h2 id="Foreign-epidemic-report-2345-cases-were-confirmed-182-cases-were-cured-31-cases-died"><a href="#Foreign-epidemic-report-2345-cases-were-confirmed-182-cases-were-cured-31-cases-died" class="headerlink" title="Foreign epidemic report, 2345 cases were confirmed, 182 cases were cured, 31 cases died"></a>Foreign epidemic report, 2345 cases were confirmed, 182 cases were cured, 31 cases died</h2><p><img src="https://i.loli.net/2020/02/25/3UCPxcKtTe57pLQ.png" alt="nCov"></p>
+<h1 id="Number-of-deaths-caused-by-truly-new-coronavirus"><a href="#Number-of-deaths-caused-by-truly-new-coronavirus" class="headerlink" title="Number of deaths caused by truly new coronavirus"></a>Number of deaths caused by truly new coronavirus</h1><p>The official data is that there were 2,697 deaths worldwide, but the actual number of deaths was more than this number. Although the mortality rate of the new coronavirus is lower than that of SARS and the United States influenza, official reports have found that new coronavirus pneumonia may show symptoms of multiple organ failure, which indicates that in many cases, patients with the new coronavirus died of other organ failure Diseases such as heart disease and kidney disease, rather than death from pneumonia-according to a wealth of reliable medical data. At the same time, carriers of this virus have a probability that the Nucleic acid detection is negative, and there are no obvious symptoms-for example, recently, a woman  had eight nucleic acid detection were negative in China.</p>
+<p><img src="https://i.loli.net/2020/02/25/Z1YasDmylCFgn4u.png" alt="nCov"></p>
+<p>This shows that the nucleic acid detection is not a 100% accurate basis for confirming the diagnosis of the new coronavirus. Then, many patients who have recently died may be patients with the new coronavirus, but no diagnosis has been made. The virus is  very cunning. Possibility of mutation-no longer pneumonia virus.</p>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<p>In summary, the death toll caused by the new coronavirus is still difficult to estimate, and new testing methods may have been invented and new symptoms of the disease discovered.</p>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="http://ssrshare.github.io/2020/02/15/sars-13/">Latest Pneumonia Epidemic Information in China</a></li></ul></div>]]></content>
+      <categories>
+        <category>Wuhan Pneumonia</category>
+      </categories>
+      <tags>
+        <tag>Wuhan pneumonia</tag>
       </tags>
   </entry>
   <entry>
@@ -434,32 +529,6 @@
       </tags>
   </entry>
   <entry>
-    <title>最新中国肺炎疫情情报</title>
-    <url>/2020/02/15/sars-12/</url>
-    <content><![CDATA[<p>2020年2月15日武汉肺炎疫情报告<br><a id="more"></a></p>
-<p>【段氏伽马刀发明人 段正澄 院士 去世】🕯🕯🕯<br>中国工程院院士、华中科技大学机械科学与工程学院教授、制造装备数字化国家工程研究中心首席科学家、机械制造与自动化专家段正澄，因病于2020年2月15日在武汉去世。</p>
-<p>【#山东 日照：一男子解除隔离10天后发病 妻孩三人皆为无症状感染者】<br>2月15日，山东省新增的新冠肺炎确诊病例中，一名42岁的日照男子刘某和家人，曾与确诊病例有接触，随后刘某和妻子于某燕(38岁)、女儿(11岁)、儿子(5岁)均被集中隔离医学观察。四人在隔离观察期间均无异常，观察期满解除隔离10天后，刘某因咳嗽、发热到日照市人民医院就诊，随即隔离治疗。2月15日核酸检测呈阳性，确定为新冠肺炎确诊病例，妻子、女儿、儿子核酸检测阳性，为无症状感染者。目前当地有关部门已对4人的密切接触者进行流行病学调查，并逐一落实集中隔离医学观察。</p>
-<p>【国家卫健委：顾客不戴口罩可拒绝其进大型商场超市】<br>为针对性指导商场和超市等人群密集场所做好卫生防护，防止新型冠状病毒肺炎蔓延和扩散，2月15日，国家卫健委发布《新型冠状病毒肺炎流行期间商场和超市卫生防护指南的通知 (<a href="http://www.nhc.gov.cn/xcs/zhengcwj/202002/6a13deef74604f39a16390679d98283c.shtml)》" target="_blank" rel="noopener">http://www.nhc.gov.cn/xcs/zhengcwj/202002/6a13deef74604f39a16390679d98283c.shtml)》</a></p>
-<p>【疫情期全国收费公路免费】<br>从交通运输部获悉，经国务院同意，2月17日零时起至疫情防控工作结束，全国收费公路免收车辆通行费。具体截止时间另行通知。此次免费范围为符合《中华人民共和国公路法》《收费公路管理条例》规定，经依法批准设置的所有收费公路(含收费桥梁和隧道);免费对象为依法通行收费公路的所有车辆。其中，联网收费高速公路以车辆驶离出口收费车道的时间为准，开放式收费的高速公路和普通收费公路以车辆通过收费站收费车道的时间为准。</p>
-<p>【钻石公主号全部乘客接受检测，呈阴性者可如期下船】<br>日本时事通讯社最新消息，日本厚生劳动大臣加藤胜信称，将对邮轮“钻石公主号”上所有乘客进行检测。若结果呈阴性，原则上将于19日放行下船。</p>
-<p>【“威士特丹号”逾千名旅客获准在 #柬埔寨 下船，总理洪森亲自欢迎】<br>2月14日，柬埔寨卫生部表示，已对“威士特丹号”游轮上身体不适的20名乘客进行检测，所有化验结果呈阴性，没有发现任何人感染新型冠状病毒。在海上漂流13日后，“威士特丹”号游轮上的1455位客人获准在柬埔寨西哈努克港下船。柬埔寨首相洪森前往码头，看望游轮乘客。该邮轮2月1日从香港出发，原定于2月15日在日本横滨结束旅程，但航行期间连续被菲律宾、中国台湾、日本、韩国和泰国拒绝停靠。</p>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="http://ssrshare.github.io/2020/02/25/sar-18/">最新新型冠状病毒的患病症状和预防方案</a></li><li><a href="http://ssrshare.github.io/2020/02/25/sars-16/">新型冠状病毒——武汉肺炎真实的死亡人数</a></li><li><a href="http://ssrshare.github.io/2020/02/17/sars-14/">2020年2月17日疫情情报</a></li><li><a href="http://ssrshare.github.io/2020/02/11/sars-11/">2020年最新北京肺炎疫情地图</a></li><li><a href="http://ssrshare.github.io/2020/02/10/sars-10/">最新武汉肺炎nCov疫情统计数据</a></li></ul></div>]]></content>
-      <categories>
-        <category>武汉肺炎</category>
-      </categories>
-      <tags>
-        <tag>武汉肺炎</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Latest Pneumonia Epidemic Information in China</title>
     <url>/2020/02/15/sars-13/</url>
     <content><![CDATA[<p>Wuhan Pneumonia Epidemic Report on February 15, 2020<br><a id="more"></a></p>
@@ -486,15 +555,15 @@
       </tags>
   </entry>
   <entry>
-    <title>如何查询比特币和以太坊钱包余额和交易信息</title>
-    <url>/2020/02/15/bitcoin-42/</url>
-    <content><![CDATA[<p>正确通过比特币浏览器查询比特币和以太坊交易信息<br><a id="more"></a></p>
-<h1 id="比特币区块浏览器原理"><a href="#比特币区块浏览器原理" class="headerlink" title="比特币区块浏览器原理"></a>比特币区块浏览器原理</h1><p>比特币是一种分布式数据库，他是公开透明的，所有的钱包信息、交易信息和区块信息都可查的，都是可溯源的，任何人不能抵赖，也是十分安全的。<br>有很多区块浏览器，他们是超级节点，他们保存着比特币网络的全部信息，所以通过比特币区块浏览器可以查询到所以的信息。<br>同理，以太坊区块浏览器也同理。<br><img src="https://i.loli.net/2020/02/15/mAf6bxti8PSrIcE.png" alt="比特币浏览器"></p>
-<h1 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h1><ol>
-<li>通过钱包地址可以查询你的钱包余额和所以的交易信息<br><img src="https://i.loli.net/2020/02/15/qrJYt4K9ZamOlho.png" alt="以太坊浏览器"></li>
-<li>通过交易号查询交易信息</li>
-<li>通过区块链号去查询</li>
-</ol>
+    <title>最新中国肺炎疫情情报</title>
+    <url>/2020/02/15/sars-12/</url>
+    <content><![CDATA[<p>2020年2月15日武汉肺炎疫情报告<br><a id="more"></a></p>
+<p>【段氏伽马刀发明人 段正澄 院士 去世】🕯🕯🕯<br>中国工程院院士、华中科技大学机械科学与工程学院教授、制造装备数字化国家工程研究中心首席科学家、机械制造与自动化专家段正澄，因病于2020年2月15日在武汉去世。</p>
+<p>【#山东 日照：一男子解除隔离10天后发病 妻孩三人皆为无症状感染者】<br>2月15日，山东省新增的新冠肺炎确诊病例中，一名42岁的日照男子刘某和家人，曾与确诊病例有接触，随后刘某和妻子于某燕(38岁)、女儿(11岁)、儿子(5岁)均被集中隔离医学观察。四人在隔离观察期间均无异常，观察期满解除隔离10天后，刘某因咳嗽、发热到日照市人民医院就诊，随即隔离治疗。2月15日核酸检测呈阳性，确定为新冠肺炎确诊病例，妻子、女儿、儿子核酸检测阳性，为无症状感染者。目前当地有关部门已对4人的密切接触者进行流行病学调查，并逐一落实集中隔离医学观察。</p>
+<p>【国家卫健委：顾客不戴口罩可拒绝其进大型商场超市】<br>为针对性指导商场和超市等人群密集场所做好卫生防护，防止新型冠状病毒肺炎蔓延和扩散，2月15日，国家卫健委发布《新型冠状病毒肺炎流行期间商场和超市卫生防护指南的通知 (<a href="http://www.nhc.gov.cn/xcs/zhengcwj/202002/6a13deef74604f39a16390679d98283c.shtml)》" target="_blank" rel="noopener">http://www.nhc.gov.cn/xcs/zhengcwj/202002/6a13deef74604f39a16390679d98283c.shtml)》</a></p>
+<p>【疫情期全国收费公路免费】<br>从交通运输部获悉，经国务院同意，2月17日零时起至疫情防控工作结束，全国收费公路免收车辆通行费。具体截止时间另行通知。此次免费范围为符合《中华人民共和国公路法》《收费公路管理条例》规定，经依法批准设置的所有收费公路(含收费桥梁和隧道);免费对象为依法通行收费公路的所有车辆。其中，联网收费高速公路以车辆驶离出口收费车道的时间为准，开放式收费的高速公路和普通收费公路以车辆通过收费站收费车道的时间为准。</p>
+<p>【钻石公主号全部乘客接受检测，呈阴性者可如期下船】<br>日本时事通讯社最新消息，日本厚生劳动大臣加藤胜信称，将对邮轮“钻石公主号”上所有乘客进行检测。若结果呈阴性，原则上将于19日放行下船。</p>
+<p>【“威士特丹号”逾千名旅客获准在 #柬埔寨 下船，总理洪森亲自欢迎】<br>2月14日，柬埔寨卫生部表示，已对“威士特丹号”游轮上身体不适的20名乘客进行检测，所有化验结果呈阴性，没有发现任何人感染新型冠状病毒。在海上漂流13日后，“威士特丹”号游轮上的1455位客人获准在柬埔寨西哈努克港下船。柬埔寨首相洪森前往码头，看望游轮乘客。该邮轮2月1日从香港出发，原定于2月15日在日本横滨结束旅程，但航行期间连续被菲律宾、中国台湾、日本、韩国和泰国拒绝停靠。</p>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
 <script>
@@ -503,12 +572,12 @@
 
 
 
-]]></content>
+<div><h1>推荐文章<span style="font-size:0.45em; color:gray"></h1><ul><li><a href="http://ssrshare.github.io/2020/02/25/sar-18/">最新新型冠状病毒的患病症状和预防方案</a></li><li><a href="http://ssrshare.github.io/2020/02/25/sars-16/">新型冠状病毒——武汉肺炎真实的死亡人数</a></li><li><a href="http://ssrshare.github.io/2020/02/17/sars-14/">2020年2月17日疫情情报</a></li><li><a href="http://ssrshare.github.io/2020/02/11/sars-11/">2020年最新北京肺炎疫情地图</a></li><li><a href="http://ssrshare.github.io/2020/02/10/sars-10/">最新武汉肺炎nCov疫情统计数据</a></li></ul></div>]]></content>
       <categories>
-        <category>比特币</category>
+        <category>武汉肺炎</category>
       </categories>
       <tags>
-        <tag>比特币浏览器</tag>
+        <tag>武汉肺炎</tag>
       </tags>
   </entry>
   <entry>
@@ -540,6 +609,32 @@
 
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>如何查询比特币和以太坊钱包余额和交易信息</title>
+    <url>/2020/02/15/bitcoin-42/</url>
+    <content><![CDATA[<p>正确通过比特币浏览器查询比特币和以太坊交易信息<br><a id="more"></a></p>
+<h1 id="比特币区块浏览器原理"><a href="#比特币区块浏览器原理" class="headerlink" title="比特币区块浏览器原理"></a>比特币区块浏览器原理</h1><p>比特币是一种分布式数据库，他是公开透明的，所有的钱包信息、交易信息和区块信息都可查的，都是可溯源的，任何人不能抵赖，也是十分安全的。<br>有很多区块浏览器，他们是超级节点，他们保存着比特币网络的全部信息，所以通过比特币区块浏览器可以查询到所以的信息。<br>同理，以太坊区块浏览器也同理。<br><img src="https://i.loli.net/2020/02/15/mAf6bxti8PSrIcE.png" alt="比特币浏览器"></p>
+<h1 id="查询方法"><a href="#查询方法" class="headerlink" title="查询方法"></a>查询方法</h1><ol>
+<li>通过钱包地址可以查询你的钱包余额和所以的交易信息<br><img src="https://i.loli.net/2020/02/15/qrJYt4K9ZamOlho.png" alt="以太坊浏览器"></li>
+<li>通过交易号查询交易信息</li>
+<li>通过区块链号去查询</li>
+</ol>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7384725227124412" data-ad-slot="5674861023"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+]]></content>
+      <categories>
+        <category>比特币</category>
+      </categories>
+      <tags>
+        <tag>比特币浏览器</tag>
+      </tags>
   </entry>
   <entry>
     <title>What is a Bitcoin Node? Segmenting Bitcoin Nodes</title>
